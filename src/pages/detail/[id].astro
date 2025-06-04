@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { Vehicle } from "../../types";
+
+const { id } = Astro.params;
+const apiUrl = `https://www.dasweltauto.at/api/locales/de_AT/vehicles/${id}/detail`;
+let vehicle = await fetch(apiUrl).then((res) => res.json()) as Vehicle;
+
+---
+
+<Layout>
+    Hello, {vehicle.overview.header}!
+</Layout>
